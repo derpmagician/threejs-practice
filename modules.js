@@ -1,5 +1,5 @@
-import * as THREE from "./three.module.js"
-import { OrbitControls } from "./OrbitControls.js"
+import * as THREE from "./tjs/three.module.js"
+import { OrbitControls } from "./tjs/OrbitControls.js"
 var scene = new THREE.Scene();
 scene.background = new THREE.Color(0x2a3b4c);
 var camera = new THREE.PerspectiveCamera(90, window.innerWidth/window.innerHeight, 0.1, 1000);
