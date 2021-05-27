@@ -54,6 +54,7 @@ const lightHelper1 = new THREE.PointLightHelper(pointLight1)//This will help you
 const lightHelper2 = new THREE.PointLightHelper(pointLight2)
 scene.add(lightHelper1, lightHelper2);
 
+
 renderer.render(scene, camera);
 
 var animate = function(){//Animation function
