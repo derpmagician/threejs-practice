@@ -1,5 +1,5 @@
-import * as THREE from "./tjs/three.module.js" //The main module
-import { OrbitControls } from "./tjs/OrbitControls.js" //This will help us control the camera
+import * as THREE from "./three.module.js" //The main module
+import { OrbitControls } from "./OrbitControls.js" //This will help us control the camera
 
 /*
 We need at least these 3 objects to actually see something
@@ -37,17 +37,10 @@ var torus = new THREE.Mesh(geometry, material);
 scene.add(torus);
 
 camera.position.setZ(50);//Objects will spawn in the middle so we move the camera
+
 var gridHelper = new THREE.GridHelper(200, 50);
 scene.add(gridHelper);
-//Camera controleer
 var controls = new OrbitControls(camera, renderer.domElement)
-
-const pointLight = new THREE.PointLight(0xffffff);//Acts as a bulb in the scene
-pointLight.position.set(10, 10, 10);
-scene.add(pointLight);
-
-const lightHelper = new THREE.PointLightHelper(pointLight)//This will help you locate the position of the pl
-scene.add(lightHelper);
 
 renderer.render(scene, camera);
 
