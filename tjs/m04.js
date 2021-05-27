@@ -30,8 +30,8 @@ Mesh:     Geometry+Material
 // Torus
 var geometry = new THREE.TorusGeometry(20, 2, 16, 100);
 //MeshBasicMaterial requires no light source
-var material = new THREE.MeshBasicMaterial({ color: 0x5f11dd, wireframe: true});
-//var material = new THREE.MeshStandardMaterial({ color: 0x5f11dd});
+//var material = new THREE.MeshBasicMaterial({ color: 0x5f11dd, wireframe: true});
+var material = new THREE.MeshStandardMaterial({ color: 0x5f11dd});
 var torus = new THREE.Mesh(geometry, material);
 
 scene.add(torus);
@@ -42,6 +42,13 @@ var gridHelper = new THREE.GridHelper(200, 50);
 scene.add(gridHelper);
 //Camera controller
 var controls = new OrbitControls(camera, renderer.domElement)
+
+const pointLight = new THREE.PointLight(0xffffff);//Acts as a bulb in the scene
+pointLight.position.set(10, 10, 10);
+scene.add(pointLight);
+
+const lightHelper = new THREE.PointLightHelper(pointLight)//This will help you locate the position of the pl
+scene.add(lightHelper);
 
 renderer.render(scene, camera);
 

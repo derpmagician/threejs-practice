@@ -39,7 +39,7 @@ scene.add(torus);
 camera.position.setZ(50);//Objects will spawn in the middle so we move the camera
 var gridHelper = new THREE.GridHelper(200, 50);
 scene.add(gridHelper);
-//Camera controleer
+//Camera controller
 var controls = new OrbitControls(camera, renderer.domElement)
 
 const pointLight = new THREE.PointLight(0xffffff);//Acts as a bulb in the scene
@@ -51,7 +51,7 @@ scene.add(lightHelper);
 
 renderer.render(scene, camera);
 
-var animate = function(){
+var animate = function(){//Animation function
 
 	requestAnimationFrame(animate);
 
