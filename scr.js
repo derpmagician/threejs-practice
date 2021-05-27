@@ -1,32 +1,35 @@
 var scene = new THREE.Scene();
+scene.background = new THREE.Color(0x2a3b4c);
+var camera = new THREE.PerspectiveCamera(90, window.innerWidth/window.innerHeight, 0.1, 1000);
 
-var camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000)
-camera.position.z = 5;
-
-var renderer = new THREE.WebGLRenderer({antialias: true});
-renderer.setClearColor("#e5e5e5");
-renderer.setSize(window.innerWidth,window.innerHeight);
-
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild(renderer.domElement);
 
-window.addEventListener('resize', () => {
-    renderer.setSize(window.innerWidth,window.innerHeight);
-    camera.aspect = window.innerWidth / window.innerHeight;
+var geometry = new THREE.TorusGeometry(20, 2, 16, 100);
+//MeshBasicMaterial requires no light source
+var material = new THREE.MeshBasicMaterial({ color: 0x5f11dd, wireframe: true});
+//var material = new THREE.MeshStandardMaterial({ color: 0x5f11dd});
+var torus = new THREE.Mesh(geometry, material);
 
-    camera.updateProjectionMatrix();
-})
+scene.add(torus);
 
-renderer.render(scene, camera);
-
-var geometry = new THREE.BoxGeometry(1, 1, 1);
-var material = new THREE.MeshLambertMaterial({color: 0xFFCC00});
-
-var mesh = new THREE.Mesh(geometry, material);
-
-scene.add(mesh);
-
-var light = new THREE.PointLight(0xFFFFFF, 1, 500)
-light.position.set(10,0,25);
-scene.add(light);
+camera.position.setZ(50);/*Objects will spawn in the middle so we move the camera */
 
 renderer.render(scene, camera);
+
+var animate = function(){
+
+	requestAnimationFrame(animate);
+
+    torus.rotation.x += 0.025;
+    torus.rotation.y += 0.025;
+    torus.rotation.z += 0.025;
+	// required if controls.enableDamping or controls.autoRotate are set to true
+	//controls.update();
+
+	renderer.render( scene, camera );
+
+}
+
+animate()
